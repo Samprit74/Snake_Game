@@ -1,0 +1,158 @@
+/* Reset some default styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+  background-color: #052828;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+/* Main game container */
+.container {
+  text-align: center;
+  position: relative;
+}
+
+/* Score bar */
+.score-board {
+  display: flex;
+  justify-content: space-between;
+  color: #fff;
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  padding: 0 1rem;
+}
+
+/* Canvas border styling */
+.outer-boarder {
+  border: 5px solid #00ffcc;
+  border-radius: 12px;
+  padding: 10px;
+  display: inline-block;
+  background-color: #001e1e;
+  box-shadow: 0 0 15px rgba(0, 255, 204, 0.5);
+}
+
+.inner-boarder {
+  border: 2px dashed #00ffcc;
+  border-radius: 6px;
+  padding: 5px;
+  background-color: #000;
+}
+
+canvas {
+  display: block;
+  border: none;
+}
+
+/* Game Over overlay */
+.game-over {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: rgba(5, 40, 40, 0.95);
+  border: 3px solid #f95700;
+  border-radius: 10px;
+  padding: 2rem;
+  color: #fff;
+  text-align: center;
+  z-index: 10;
+  width: 300px;
+  box-shadow: 0 0 20px rgba(249, 87, 0, 0.7);
+}
+
+/* Hide class */
+.hide {
+  display: none;
+}
+
+/* Game Over text and scores */
+.game-over .message {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  color: #ff6666;
+}
+
+.game-over-score {
+  margin-bottom: 1rem;
+}
+
+.game-over-score .current,
+.game-over-score .high {
+  font-size: 1.3rem;
+  margin: 0.3rem 0;
+}
+
+/* Play again button after Game Over */
+.play-again {
+  padding: 0.8rem 1.5rem;
+  background-color: #17d621;
+  color: #fff;
+  font-size: 1rem;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.play-again:hover {
+  background-color: #13ba1e;
+}
+
+/* 🟢 New High Score overlay - GREEN THEME */
+.new-high-score {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: rgba(10, 60, 10, 0.95);
+  border: 3px solid #00ff88;
+  border-radius: 10px;
+  padding: 2rem;
+  color: #dfffe0;
+  text-align: center;
+  z-index: 10;
+  width: 320px;
+  box-shadow: 0 0 25px rgba(0, 255, 136, 0.7);
+}
+
+/* New High Score text */
+.new-high-score .message {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  color: #00ff88;
+  text-shadow: 0 0 10px rgba(0, 255, 136, 0.6);
+  font-weight: bold;
+}
+
+.new-high-score .current,
+.new-high-score .high {
+  font-size: 1.3rem;
+  margin: 0.5rem 0;
+  color: #ffffff;
+}
+
+/* Try again button for New High Score */
+.try_again {
+  margin-top: 1rem;
+  padding: 0.8rem 1.5rem;
+  background-color: #00c957;
+  color: #fff;
+  font-size: 1rem;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.try_again:hover {
+  background-color: #00a84d;
+}
