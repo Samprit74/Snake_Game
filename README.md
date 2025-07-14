@@ -115,10 +115,16 @@ Each shows the final score, high score, and a Play Again button.
 - Can be extended with difficulty levels, leaderboard, or mobile controls.
 
 ---
+---
 
 ## 🎮 Live Demo
 
-Play the Snake Game:  
-👉 [https://snake-game-samprit-0-177.netlify.app](https://snake-game-samprit-0-177.netlify.app)
+Play the Snake Game here 👉  
+🔗 [https://snakevibe360-samprit.netlify.app](https://snakevibe360-samprit.netlify.app)
+
+> Hosted on Netlify   
+> Built by Samprit Roy
+
+---
 
 Happy Coding!
