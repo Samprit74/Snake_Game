@@ -184,7 +184,7 @@ function createFood() {
             }
         }, 1000);
     } else {
-        foodColor = '#9bee0dff'; 
+        foodColor = '#9D00FF'; 
         console.log('spetial food'); // Special color
     }
     return newFood;
