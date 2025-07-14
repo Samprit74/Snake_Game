@@ -141,12 +141,9 @@ canvas {
 }
 canvas {
   display: block;
-  background-color: #000; /* Still dark */
-  background-image: 
-    linear-gradient(to right, #0f403f 1px, transparent 1px),
-    linear-gradient(to bottom, #0f403f 1px, transparent 1px);
-  background-size: calc(100% / 20) calc(100% / 20);
+  background-color: black; /* optional fallback */
 }
+
 
 /* Try again button for New High Score */
 .try_again {

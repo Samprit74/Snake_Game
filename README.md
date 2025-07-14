@@ -1,6 +1,6 @@
 # 🐍 Snake Game
 
-A simple and fun browser-based Snake Game built with HTML, CSS,
+A simple and fun browser-based Snake Game built with HTML, CSS,  
 and JavaScript.
 
 ---
@@ -10,6 +10,7 @@ and JavaScript.
 - Canvas-based movement  
 - Randomized starting snake position  
 - Food that changes color (between green and grey) to attract attention  
+- Special food every 3rd time that gives bonus points  
 - Sound effects for eating, game over, and win  
 - Score tracking with persistent high score using localStorage  
 - Game Over and Win overlays with messages  
@@ -44,6 +45,16 @@ This prevents repetitive gameplay and adds variety every time.
 
 ---
 
+## 🎯 Special Food Feature
+
+- Every **3rd food** that appears is a **Special Food** 🍭  
+- Special food gives **+5 points** instead of +1  
+- It has a **unique color** (`#b605c6`) to distinguish it from normal food  
+- Eating it also **extends the snake’s body more than usual**  
+- This adds an exciting twist and rewards sharp focus during gameplay!
+
+---
+
 ## 🔊 Sound Effects
 
 - Eating food: `snake-sound.wav` is played.
@@ -65,8 +76,8 @@ This prevents repetitive gameplay and adds variety every time.
 
 Both screens are overlay `<div>` elements shown when:
 
-- Snake hits wall or its own body → Game Over screen
-- Player breaks the high score → New High Score screen
+- Snake hits wall or its own body → Game Over screen  
+- Player breaks the high score → New High Score screen  
 
 Each shows the final score, high score, and a Play Again button.
 
@@ -74,15 +85,25 @@ Each shows the final score, high score, and a Play Again button.
 
 ## 🛠 Technologies Used
 
-- HTML5 Canvas
-- Vanilla JavaScript (No libraries)
-- CSS Flexbox for layout
-- localStorage for high score
-- `<audio>` tag for sound playback
+- HTML5 Canvas  
+- Vanilla JavaScript (No libraries)  
+- CSS Flexbox for layout  
+- localStorage for high score  
+- `<audio>` tag for sound playback  
 
 ---
 
 ## 📁 Folder Structure
+
+/
+├── index.html
+├── style.css
+├── index.js
+├── audios/
+│ ├── snake-sound.wav
+│ ├── game_over.wav
+│ └── game_win.wav
+└── README.md
 
 
 ---
@@ -94,7 +115,9 @@ Each shows the final score, high score, and a Play Again button.
 - Can be extended with difficulty levels, leaderboard, or mobile controls.
 
 ---
+
 ## 🎮 Live Demo
+
 Play the Snake Game:  
 👉 [https://snake-game-samprit-0-177.netlify.app](https://snake-game-samprit-0-177.netlify.app)
 

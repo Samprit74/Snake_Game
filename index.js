@@ -20,6 +20,9 @@ const playAgainBtn = document.querySelector('.play-again');
 let foodColor = 'red';
 let foodColorToggleCount = 0;
 let foodColorInterval;
+let foodCount = 0;
+let isSpecialFood = false;
+
 
 //game variable
 const fps = 1000 / 10;
@@ -48,10 +51,15 @@ const direction = {
     up: 'ArrowUp',
     down: 'ArrowDown',
 };
-//draw board
-function drawBoard() {
-    ctx.fillStyle = boardColor;
-    ctx.fillRect(0, 0, width, height);
+
+//draw grid
+function drawGrid(ctx, boxSize, cols, rows) {
+    for (let y = 0; y < rows; y++) {
+        for (let x = 0; x < cols; x++) {
+            ctx.fillStyle = (x + y) % 2 === 0 ? '#0d1b1e' : '#1a2e2f'; // Light and dark ash
+            ctx.fillRect(x * boxSize, y * boxSize, boxSize, boxSize);
+        }
+    }
 }
 
 //draw square
@@ -100,13 +108,21 @@ function moveSnake() {
     // Update oldDirection after movement
     oldDirection = currentDirection;
     if (hasEatenFood()) {
-        eatSound.currentTime = 0; // Rewind sound if it's still playing
-        eatSound.play();          // Play the .wav sound
-        food = createFood();
-    } else {
-        //remove tail
-        snake.pop();
+    eatSound.currentTime = 0;
+    eatSound.play();
+    
+    if (isSpecialFood) {
+        // Add extra length for special food
+        for (let i = 0; i < 3; i++) {
+            snake.push({ ...snake[snake.length - 1] });
+        }
     }
+
+    food = createFood();  // Generate next food
+} else {
+    snake.pop();
+}
+
 
     //unshift new head
     snake.unshift(head);
@@ -142,30 +158,38 @@ function setDirection(event) {
 let food = createFood();
 function createFood() {
     let newFood;
+
+    //Keep trying random food positions until it's not on the snake
     do {
         newFood = {
             x: Math.floor(Math.random() * horizontalSq),
             y: Math.floor(Math.random() * verticalSq),
-        }
+        };
+    } while (snake.some(square => square.x === newFood.x && square.y === newFood.y));
 
-    } while (snake.some(square => square.x === newFood.x && square.y === newFood.y)) {
-        foodColorToggleCount = 0;
-        clearInterval(foodColorInterval);
+    foodCount++;
+    isSpecialFood = (foodCount % 3 === 0);  // Every 3rd food
+
+    foodColorToggleCount = 0;
+    clearInterval(foodColorInterval);
+
+    if (!isSpecialFood) {
+        foodColor = 'red';
         foodColorInterval = setInterval(() => {
-            // Toggle between gray and yellow
             foodColor = foodColor === 'red' ? 'yellow' : 'red';
             foodColorToggleCount++;
-
-            // Stop after 15 toggles (15 seconds)
             if (foodColorToggleCount >= 15) {
                 clearInterval(foodColorInterval);
-                foodColor = 'yellow'; // final fixed color
+                foodColor = 'yellow';
             }
         }, 1000);
-
-        return newFood;
+    } else {
+        foodColor = '#9D00FF'; 
+        console.log('spetial food'); // Special color
     }
+    return newFood;
 }
+
 function drawFood() {
     drawSquare(food.x, food.y, foodColor);
 }
@@ -242,7 +266,10 @@ async function gameover() {
 
 //game loop
 async function frame() {
-    drawBoard();
+    // Draw grid before anything else
+    drawGrid(ctx, squareSize, horizontalSq, verticalSq);
+
+    //rest method called step bt step
     drawFood();
     moveSnake();
     drawSnake();
